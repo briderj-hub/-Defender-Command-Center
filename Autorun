@@ -1,0 +1,60 @@
+Auto run the shell
+
+The professional way to auto-run this without prompts is using Task Scheduler.
+
+Step 1: "Install" the Script
+Create a folder on your C: drive, for example: C:\Tools\DefenderCenter.
+
+Save the script code as DefenderCenter.ps1 inside that folder.
+
+Step 2: Set up Auto-Run (The Clean Way)
+This method uses Windows Task Scheduler to launch the tool with "Highest Privileges" automatically when you log in, skipping the annoying Yes/No prompt.
+
+Press Windows Key + R, type taskschd.msc, and hit Enter.
+
+On the right side, click Create Task.
+
+General Tab:
+
+Name: Defender Command Center
+
+Security Options: Check "Run with highest privileges" (Critical!).
+
+Configure for: Select Windows 10.
+
+Triggers Tab:
+
+Click New.
+
+Begin the task: Select "At log on".
+
+Click OK.
+
+Actions Tab:
+
+Click New.
+
+Action: Start a program.
+
+Program/script: powershell.exe
+
+Add arguments: -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Tools\DefenderCenter\DefenderCenter.ps1" (Make sure the path matches where you saved it!)
+
+Click OK.
+
+Conditions Tab:
+
+Uncheck "Start the task only if the computer is on AC power" (so it runs on laptops too).
+
+Click OK.
+
+Step 3: Create a Desktop Shortcut (Optional)
+If you want a desktop icon to launch it manually:
+
+Right-click your Desktop > New > Shortcut.
+
+Paste this into the location box: powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File "C:\Tools\DefenderCenter\DefenderCenter.ps1"
+
+Click Next, name it "Defender Center", and click Finish.
+
+(Optional) Right-click the new shortcut > Properties > Change Icon and pick a shield icon to make it look official.
