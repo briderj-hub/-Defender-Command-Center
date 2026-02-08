@@ -1,56 +1,62 @@
-# -Defender-Command-Center
-A "Single Pane of Glass" PowerShell GUI for managing Windows Defender, Firewall, and System Hardening. 
-Key Features:
+Defender Command Center
+The All-in-One Incident Response & Security Dashboard for Windows.
 
-🖥️ System Dashboard
-Visual Health Status: Instantly see the status of Real-time Protection, Ransomware Shields, and Firewall Profiles (Domain, Private, Public).
+Defender Command Center is a standalone PowerShell GUI designed for SysAdmins, Blue Teams, and Power Users. It unifies Windows Defender, Firewall, and system hardening controls into a single pane of glass, eliminating the need to dig through nested Settings menus or memorize PowerShell commands during an incident.
 
-Hardware Security: One-glance verification of Secure Boot, TPM 2.0, Tamper Protection, and BitLocker encryption status.
+🔥 Top-Level Features
+No Installation Required: Runs as a standalone script or compiled EXE.
 
-System Monitor: Real-time Internet Connectivity checks and Uptime/Reboot Pending detection to ensure security patches are applied.
+Sentinel Mode: Active background monitoring that alerts you via System Tray if malware is detected.
 
-🚨 Incident Response
-Panic Mode: A "Nuclear Option" that instantly blocks ALL inbound and outbound network traffic to isolate a compromised machine.
+Panic Button: A "Nuclear Option" to instantly block all network traffic (Inbound/Outbound) to isolate a compromised machine.
 
-Offline Scan: Reboot directly into the Windows Defender Offline recovery environment to remove persistent rootkits.
+Self-Healing: Built-in "Repair Services" tool to force-start crashed security services (WinDefend, MpsSvc, wuauserv).
 
-Threat History: Parse Windows Event Logs to view a detailed timeline of past malware detections and actions taken.
+👁️ Monitor & Detect
+System Dashboard: Real-time view of Uptime, CPU/RAM usage, and connectivity status.
 
-🛠️ Advanced Management
-ASR Rules Manager: Easily toggle Attack Surface Reduction rules (Block / Audit / Disable) with human-readable descriptions instead of GUIDs.
+Live Network Monitor: View every active TCP connection linked to its specific Process ID and Name.
 
-Quarantine Manager: View, Restore, or Permanently Delete quarantined threats.
+Actions: Kill Process, Block Remote IP (Firewall), Flush DNS, and Whois IP lookup.
 
-Exclusion Editor: Add or remove folders from Defender exclusions interactively.
+Threat History: A parsed, readable view of Windows Defender event logs (Detections & Actions).
 
-Patch Management: Query the Windows Update API to identify missing Security Updates in real-time.
+Sentinel: A background watcher that pops up a notification the moment Defender logs a threat (Event 1116/1118) or if Tamper Protection is disabled (Event 5001).
 
-🔍 Threat Intelligence & Tools
-VirusTotal Integration: Calculate file hashes and scan them against VirusTotal with a single click.
+⚙️ Manage & Harden
+ASR Rules Manager: Toggle Microsoft's Attack Surface Reduction rules (Block/Audit/Disable) without needing Group Policy.
 
-Second Opinion: Quick access to download tools like Malwarebytes, Kaspersky KVRT, and Emsisoft Emergency Kit.
+Advanced Shields: One-click toggles for:
 
-Audit Trail: Persistent logging of all actions taken within the tool (saved to disk).
+Ransomware Protection (Controlled Folder Access).
 
-📸 Screenshots
-(Add your screenshots here, e.g., Dashboard view, ASR Rules tab, Panic Mode active)
+PUA Blocking (Potentially Unwanted Applications).
 
-⚙️ Requirements
-OS: Windows 10 or Windows 11
+Network Protection (SmartScreen for the whole OS).
 
-PowerShell: Version 5.1 or later
+USB Storage Blocker (Disable USB drivers to prevent physical data theft).
 
-Permissions: Must be run as Administrator (The script handles self-elevation automatically).
+Startup Inspector: Audit programs starting with Windows (Registry & Folder).
 
-📥 Installation & Usage
-Download the latest DefenderCommandCenter.ps1 release.
+Actions: Delete Persistence or Check hash on VirusTotal.
 
-Right-click the file and select Run with PowerShell.
+Exclusion Manager: View hidden antivirus exclusions and remove them if they were added by malware.
 
-Accept the UAC prompt to allow Administrator access.
+🛠️ Tools & Utilities
+Health Report Generator: Creates a timestamped .txt audit report on the Desktop (System Status, Patch Level, Security Config) for clients/management.
 
-Note: You may need to set your execution policy to allow scripts: Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+VirusTotal Scanner: Integrated hash scanner for suspicious files.
 
+3rd Party Scanners: Quick-download links for "Second Opinion" tools (Malwarebytes, Kaspersky KVRT, Emsisoft).
+
+Auto-Run Installer: One-click setup to make the tool launch silently (minimized) at boot via Task Scheduler.
+
+🎨 User Experience
+System Tray Integration: Minimizes to the tray instead of closing; keeps "Sentinel" active in the background.
+
+Dark/Light Mode: Toggleable UI themes.
+
+Tooltips: Hover over any feature to learn exactly what it does (e.g., explains what "Secure Boot" or "TPM" actually protects).
 ⚠️ Disclaimer
 This tool makes changes to system security settings (Firewall, Defender preferences). Use with caution, especially in production environments. The "Panic Mode" will cut off all network access, including RDP sessions.
 
